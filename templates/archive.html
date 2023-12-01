@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Archive Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+ 
+    <style>
+        .title {
+            margin-top: 30px;
+            margin-bottom: 50px; 
+        }
+
+        .image-number {
+            font-size: 58px; 
+            margin-left: 90px;
+        }
+
+        .back-button {
+            margin-top: 50px;
+            margin-bottom: 50px; 
+        }
+
+        .col-md-5{
+            margin-left: -10px;
+        }
+
+        .col-md-6{
+            margin-top: 50px;
+            margin-right: -90px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center title">Archive</h1>
+    <div class="container">
+        {% for entry in archive_data %}
+            <div class="row mt-3">
+                <div class="col-md-1 image-number">
+                    <p>{{ loop.index }}</p>
+                </div>
+                <div class="col-md-5">
+                    <img id="picture" src="data:image/jpeg;base64,{{ entry['image_path'] }}" height="200px" width="200px">
+                </div>
+                <div class="col-md-6">
+                    <h2>Prediction: <i>{{ entry['prediction'] }}</i></h2>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-3 back-button">
+        <a class="btn btn-primary" href="/">Back to Home</a>
+    </div>
+</body>
+</html>
